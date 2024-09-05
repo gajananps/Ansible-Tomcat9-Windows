@@ -1,8 +1,6 @@
 ---
 - name: Preparing the inventory file
   hosts: localhost
-  become: true
-  become_method: sudo
   vars_files:
     - input.yaml
   tasks:
