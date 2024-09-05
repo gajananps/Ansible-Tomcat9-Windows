@@ -3,10 +3,12 @@
   hosts: localhost
   become: true
   become_method: sudo
+  vars_files:
+    - input.yaml
   tasks:
     - name: Create the inventory file
       template:
-        src: "{{ scripts }}/template/inventory.j2"
-        dest: "{{ scripts }}/inventory"
+        src: "inventory.j2"
+        dest: "inventory"
         force: true
 ...
