@@ -3,9 +3,6 @@
   hosts: localhost
   become: true
   become_method: sudo
-  vars_files:
-    - ../configuration/input.yaml
-    - default.yaml
   tasks:
     - name: Create the inventory file
       template:
