@@ -1,0 +1,27 @@
+---
+- name: Tomcat Installation on Windows Single Server
+  hosts: application_server
+  tasks:
+    - name: JRE path creating under C:\
+      win_file:
+        path: "C:\\Tomcat"
+        state: directory
+    - name: Download java 9.0.93 for windwows
+      win_get_url:
+        url: https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.93/bin/apache-tomcat-9.0.93-windows-x64.zip
+        dest: "{{ ansible_env.USERPROFILE }}"
+    - name: Extract the zip file
+      win_unzip:
+        src: "{{ ansible_env.USERPROFILE }}\\apache-tomcat-9.0.93-windows-x64.zip"
+        dest: "{{ ansible_env.USERPROFILE }}"
+        delete_archive: true
+    - name: Move to C drive
+      win_copy:
+        src: "{{ ansible_env.USERPROFILE }}\\apache-tomcat-9.0.93\\"
+        dest: "C:\\Tomcat"
+        remote_src: true
+    - name: Remove the folder
+      win_file:
+        path: "{{ ansible_env.USERPROFILE }}\\apache-tomcat-9.0.93"
+        state: absent
+...

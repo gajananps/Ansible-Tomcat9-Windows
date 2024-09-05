@@ -1,0 +1,8 @@
+[application_server]
+{{ server_ip }}
+[application_server:vars]
+ansible_user={{ server_user }}
+ansible_password="{{ server_password }}"
+ansible_connection=winrm
+ansible_port=5985
+ansible_winrm_server_cert_validation=ignore

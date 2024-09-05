@@ -1,0 +1,15 @@
+---
+- name: Preparing the inventory file
+  hosts: localhost
+  become: true
+  become_method: sudo
+  vars_files:
+    - ../configuration/input.yaml
+    - default.yaml
+  tasks:
+    - name: Create the inventory file
+      template:
+        src: "{{ scripts }}/template/inventory.j2"
+        dest: "{{ scripts }}/inventory"
+        force: true
+...
