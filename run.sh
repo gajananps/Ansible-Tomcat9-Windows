@@ -18,4 +18,7 @@ then
     echo "Tomcat Installation Failed" | tee -a ${errorlog} | tee ${infolog} &>/dev/null
     echo "failed" > ${statuslog}
     exit 1
+else
+    echo "Tomcat Installation success" | tee -a ${errorlog} | tee ${infolog} &>/dev/null
+    echo "success" > ${statuslog}
 fi
